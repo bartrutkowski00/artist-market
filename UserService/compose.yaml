@@ -1,9 +1,13 @@
 services:
-  postgres:
+  db:
     image: 'postgres:latest'
+    restart: always
     environment:
-      - 'POSTGRES_DB=mydatabase'
-      - 'POSTGRES_PASSWORD=secret'
-      - 'POSTGRES_USER=myuser'
+      - 'POSTGRES_DB=userdb'
+      - 'POSTGRES_PASSWORD=u78s78er9'
+      - 'POSTGRES_USER=user'
+    expose:
+      - "2431"
     ports:
-      - '5432'
+      - "2431:2431"
+    command: -p 2431

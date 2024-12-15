@@ -1,0 +1,9 @@
+/home/brutkowski/ArtistMarketRepo/artist-market/UserService/src/main/java/com/am/user_service/UserServiceApplication.java
+/home/brutkowski/ArtistMarketRepo/artist-market/UserService/src/main/java/com/am/user_service/repositories/CityRepository.java
+/home/brutkowski/ArtistMarketRepo/artist-market/UserService/src/main/java/com/am/user_service/repositories/CountryRepository.java
+/home/brutkowski/ArtistMarketRepo/artist-market/UserService/src/main/java/com/am/user_service/repositories/UserroleRepository.java
+/home/brutkowski/ArtistMarketRepo/artist-market/UserService/src/main/java/com/am/user_service/repositories/UsrRepository.java
+/home/brutkowski/ArtistMarketRepo/artist-market/UserService/src/main/java/domain/entities/CityEntity.java
+/home/brutkowski/ArtistMarketRepo/artist-market/UserService/src/main/java/domain/entities/CountryEntity.java
+/home/brutkowski/ArtistMarketRepo/artist-market/UserService/src/main/java/domain/entities/UserroleEntity.java
+/home/brutkowski/ArtistMarketRepo/artist-market/UserService/src/main/java/domain/entities/UsrEntity.java

@@ -1,0 +1,9 @@
+domain/entities/CountryEntity.class
+com/am/user_service/repositories/UserroleRepository.class
+com/am/user_service/repositories/CountryRepository.class
+domain/entities/CityEntity.class
+com/am/user_service/repositories/CityRepository.class
+domain/entities/UsrEntity.class
+domain/entities/UserroleEntity.class
+com/am/user_service/UserServiceApplication.class
+com/am/user_service/repositories/UsrRepository.class
