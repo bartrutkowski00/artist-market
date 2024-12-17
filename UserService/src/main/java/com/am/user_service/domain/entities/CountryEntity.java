@@ -1,4 +1,5 @@
-package domain.entities;
+package com.am.user_service.domain.entities;
+import com.am.user_service.domain.dto.CountryDTO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -16,7 +17,11 @@ public class CountryEntity {
     }
 
     public CountryEntity(){
+    }
 
+    public CountryEntity(CountryDTO countryDTO){
+        this.countryid = countryDTO.getCountryid();
+        this.name = countryDTO.getName();
     }
 
     public Long getCountryid() {

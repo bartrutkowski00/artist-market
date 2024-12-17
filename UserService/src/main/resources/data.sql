@@ -26,10 +26,10 @@ WHEN NOT MATCHED THEN
     VALUES (source.userroleid, source.description);
 
 MERGE INTO usr AS target
-USING (VALUES(1, 'am', 'am@artist.com', 592432854, 1, 1, current_date, current_date)) AS source(usrid, username, email, phone, cityid, userroleid, createddate, updateddate)
+USING (VALUES(1, 'am','TestPassword', 'am@artist.com', 592432854, 1, 1, TRUE, current_date, current_date)) AS source(usrid, username, password, email, phone, cityid, userroleid, activatedind, createddate, updateddate)
 ON target.usrid = source.usrid
 WHEN MATCHED THEN
-    UPDATE SET usrid = source.usrid, username = source.username, email = source.email, phone = source.phone, cityid = source.cityid, userroleid = source.userroleid, createddate = source.createddate, updateddate = source.createddate 
+    UPDATE SET usrid = source.usrid, username = source.username, password = source.password, email = source.email, phone = source.phone, cityid = source.cityid, userroleid = source.userroleid, activatedind = source.activatedind, createddate = source.createddate, updateddate = source.createddate
 WHEN NOT MATCHED THEN
-    INSERT (usrid, username, email, phone, cityid, userroleid, createddate, updateddate) 
-    VALUES (source.usrid, source.username, source.email, source.phone, source.cityid, source.userroleid,  source.createddate, source.updateddate);
+    INSERT (usrid, username, password, email, phone, cityid, userroleid, activatedind, createddate, updateddate)
+    VALUES (source.usrid, source.username, source.password, source.email, source.phone, source.cityid, source.userroleid, source.activatedind, source.createddate, source.updateddate);

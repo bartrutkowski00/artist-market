@@ -1,4 +1,5 @@
-package domain.entities;
+package com.am.user_service.domain.entities;
+import com.am.user_service.domain.dto.CityDTO;
 import jakarta.persistence.*;
 
 
@@ -19,6 +20,12 @@ public class CityEntity {
     }
 
     public CityEntity() {
+    }
+
+    public CityEntity(CityDTO cityDTO){
+        this.cityid = cityDTO.getCityid();
+        this.name = cityDTO.getName();
+        this.country = cityDTO.getCountry();
     }
 
     public Long getCityid() {

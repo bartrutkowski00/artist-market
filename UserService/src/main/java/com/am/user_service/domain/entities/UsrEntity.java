@@ -1,5 +1,7 @@
-package domain.entities;
+package com.am.user_service.domain.entities;
 
+import com.am.user_service.domain.dto.UserDTO;
+import com.am.user_service.security.Encryption;
 import jakarta.persistence.*;
 
 
@@ -13,6 +15,7 @@ public class UsrEntity {
     @Id
     private Long usrid;
     private String username;
+    private String password;
     private String email;
     private Integer phone;
     @ManyToOne(cascade = CascadeType.ALL)
@@ -21,13 +24,41 @@ public class UsrEntity {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "userroleid")
     private UserroleEntity userrole;
+    private Boolean activatedind;
     private Date createddate;
     private Date updateddate;
 
     public UsrEntity(){
-
     }
 
+    public String getPassword() {
+        return Encryption.decrypt(password);
+    }
+
+    public void setPassword(String password) {
+        this.password = Encryption.encrypt(password);
+    }
+
+    public Boolean getActivatedind() {
+        return activatedind;
+    }
+
+    public void setActivatedind(Boolean activatedind) {
+        this.activatedind = activatedind;
+    }
+
+    public UsrEntity(UserDTO userDTO){
+        this.city = userDTO.getCity();
+        this.createddate = userDTO.getCreateddate();
+        this.updateddate = userDTO.getUpdateddate();
+        this.email = userDTO.getEmail();
+        this.phone = userDTO.getPhone();
+        this.usrid = userDTO.getUserid();
+        this.userrole = userDTO.getUserrole();
+        this.username = userDTO.getUsername();
+        this.password = Encryption.encrypt(userDTO.getPassword());
+        this.activatedind = userDTO.getActivatedind();
+    }
 
     public Long getUsrid() {
         return usrid;
@@ -93,11 +124,13 @@ public class UsrEntity {
         this.updateddate = updateddate;
     }
 
-    public UsrEntity(Long usrid, String username, String email, Integer phone, CityEntity city, UserroleEntity userrole, Date updateddate, Date createddate) {
+    public UsrEntity(Long usrid, String username, String password, Boolean activatedind, String email, Integer phone, CityEntity city, UserroleEntity userrole, Date updateddate, Date createddate) {
         this.usrid = usrid;
         this.username = username;
+        this.password = Encryption.encrypt(password);
         this.email = email;
         this.phone = phone;
+        this.activatedind = activatedind;
         this.city = city;
         this.userrole = userrole;
         this.updateddate = updateddate;
