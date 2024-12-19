@@ -13,15 +13,18 @@ import java.util.Date;
 public class UsrEntity {
 
     @Id
+    @GeneratedValue (strategy = GenerationType.SEQUENCE, generator = "usr_seq")
+    @SequenceGenerator(name = "usr_seq", sequenceName = "usr_seq", allocationSize = 1)
+    @Column(name = "usrid")
     private Long usrid;
     private String username;
     private String password;
     private String email;
     private Integer phone;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "cityid")
     private CityEntity city;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "userroleid")
     private UserroleEntity userrole;
     private Boolean activatedind;
