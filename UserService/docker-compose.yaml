@@ -1,0 +1,25 @@
+services:
+  app:
+    image: 'docker-spring-boot-postgres:latest'
+    build:
+      context: .
+    container_name: app
+    depends_on:
+      - db
+    ports:
+      - "2432:2432"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:2431/userdb
+      - SPRING_DATASOURCE_USERNAME=user
+      - SPRING_DATASOURCE_PASSWORD=u78s78er9
+      - SERVER_PORT=2432
+  db:
+    image: 'postgres:latest'
+    restart: always
+    environment:
+      - POSTGRES_DB=userdb
+      - POSTGRES_PASSWORD=u78s78er9
+      - POSTGRES_USER=user
+    ports:
+      - "2431:2431"
+    command: postgres -p 2431

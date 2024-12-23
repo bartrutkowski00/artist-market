@@ -1,0 +1,4 @@
+com/am/user_service/services/UserServiceImplIntegrationTests.class
+com/am/user_service/UserServiceApplicationTests.class
+com/am/user_service/testutil/TestUtils.class
+com/am/user_service/repositories/UsrRepositoryIntegrationTests.class

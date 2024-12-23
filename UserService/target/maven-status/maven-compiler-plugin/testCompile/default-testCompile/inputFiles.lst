@@ -1,0 +1,4 @@
+/home/brutkowski/ArtistMarketRepo/artist-market/UserService/src/test/java/com/am/user_service/UserServiceApplicationTests.java
+/home/brutkowski/ArtistMarketRepo/artist-market/UserService/src/test/java/com/am/user_service/repositories/UsrRepositoryIntegrationTests.java
+/home/brutkowski/ArtistMarketRepo/artist-market/UserService/src/test/java/com/am/user_service/services/UserServiceImplIntegrationTests.java
+/home/brutkowski/ArtistMarketRepo/artist-market/UserService/src/test/java/com/am/user_service/testutil/TestUtils.java
