@@ -36,7 +36,7 @@ public class UserDTO {
 
     public UserDTO(UsrEntity usrEntity) {
         this.username = usrEntity.getUsername();
-        this.password = Encryption.decrypt(usrEntity.getPassword());
+        this.password = usrEntity.getPassword() == null ? null : Encryption.decrypt(usrEntity.getPassword());
         this.userid = usrEntity.getUsrid();
         this.email = usrEntity.getEmail();
         this.phone = usrEntity.getPhone();

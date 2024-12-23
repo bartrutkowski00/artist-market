@@ -59,7 +59,7 @@ public class UsrEntity {
         this.usrid = userDTO.getUserid();
         this.userrole = userDTO.getUserrole();
         this.username = userDTO.getUsername();
-        this.password = Encryption.encrypt(userDTO.getPassword());
+        this.password = userDTO.getPassword() == null ? null : Encryption.encrypt(userDTO.getPassword());
         this.activatedind = userDTO.getActivatedind();
     }
 

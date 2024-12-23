@@ -1,5 +1,6 @@
 package com.am.user_service.services;
 
+import com.am.user_service.domain.dto.CityDTO;
 import com.am.user_service.domain.dto.UserDTO;
 import com.am.user_service.repositories.UsrRepository;
 import com.am.user_service.security.Encryption;
@@ -67,4 +68,22 @@ public class UserServiceImplIntegrationTests {
 
     }
 
+    @Test
+    public void testThatUpdatingUserWorks(){
+        UserDTO updateUser = TestUtils.createTestUserForUpdatingDTO(1L, "Updated", "updated");
+
+        underTest.updateUser(updateUser);
+        UserDTO updated =  underTest.getUser(1L);
+        System.out.println(updated.getUsername());
+    }
+
+    @Test
+    public void testThatGettingCitiesWorks(){
+        List<CityDTO> cities = underTest.getCities();
+
+        for (CityDTO city : cities){
+            System.out.println(city.getName());
+        }
+
+    }
 }

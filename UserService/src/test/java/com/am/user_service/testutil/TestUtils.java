@@ -62,6 +62,21 @@ public class TestUtils {
                 FALSE);
     }
 
+    public static UserDTO createTestUserForUpdatingDTO(Long id, String username, String email){
+
+
+        return new UserDTO(username,
+                null,
+                id,
+                email,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null );
+    }
+
 
 
 }

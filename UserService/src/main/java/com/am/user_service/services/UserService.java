@@ -1,6 +1,9 @@
 package com.am.user_service.services;
 
+import com.am.user_service.domain.dto.CityDTO;
+import com.am.user_service.domain.dto.FilterDTO;
 import com.am.user_service.domain.dto.UserDTO;
+import com.am.user_service.domain.dto.UserroleDTO;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -11,11 +14,13 @@ public interface UserService {
     UserDTO activateUser(String username, String password);
     UserDTO changePassword(String username, String password , String newPassword);
     Boolean logIn(String username, String password);
-    UserDTO updateUser(Long usrid);
+    UserDTO updateUser(UserDTO userDTO);
     UserDTO getUser(Long usrid);
     List<UserDTO> getAllUsers(Long userRoleId);
     List<UserDTO> getAllUsers();
-    List<UserDTO> findUsers(String email, Integer phone, String city, Integer userrole, Date createdDateFrom,Date createdDateTo);
+    List<UserDTO> findUsers(FilterDTO filterDTO);
     void deleteUser(Long usrid);
+    List<CityDTO> getCities();
+    List<UserroleDTO> getUserRoles();
 
 }
