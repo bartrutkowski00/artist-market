@@ -1,0 +1,11 @@
+services:
+  db:
+    image: 'postgres:latest'
+    restart: always
+    environment:
+      - POSTGRES_DB=marketdb
+      - POSTGRES_PASSWORD=u78s78er10
+      - POSTGRES_USER=user
+    ports:
+      - "2531:2531"
+    command: postgres -p 2531
