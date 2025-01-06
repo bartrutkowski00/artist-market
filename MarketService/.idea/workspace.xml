@@ -5,8 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="162c327e-40a8-45ef-94f7-97ffc5738198" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../service-registry/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/../service-registry/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/market_service/MarketServiceApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/market_service/MarketServiceApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/market_service/config/MapperConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/market_service/config/MapperConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/market_service/domain/DTOs/EventTypeDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/market_service/domain/DTOs/EventTypeDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/market_service/domain/DTOs/OrdersDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/market_service/domain/DTOs/OrdersDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/market_service/domain/entities/EventTypeEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/market_service/domain/entities/EventTypeEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/market_service/domain/entities/OrdersEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/market_service/domain/entities/OrdersEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/market_service/repositories/OrdersRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/market_service/repositories/OrdersRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/market_service/services/OrdersService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/market_service/services/OrdersService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/example/market_service/MarketServiceApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/example/market_service/MarketServiceApplicationTests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/example/market_service/services/OrdersServiceIntegrationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/example/market_service/services/OrdersServiceIntegrationTests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/example/market_service/utils/TestUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/example/market_service/utils/TestUtils.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,9 +51,9 @@
     "Maven.market-service [install].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "config/eureka",
+    "git-widget-placeholder": "service/payment",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/brutkowski/ArtistMarketRepo/artist-market/service-registry"
+    "last_opened_file_path": "/home/brutkowski/ArtistMarketRepo/artist-market/payment-service"
   }
 }]]></component>
   <component name="RunAnythingCache">
