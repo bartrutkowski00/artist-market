@@ -4,23 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cd18a0d0-249c-490a-8245-5e74784a15e0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/market_service/communication/UserServiceFeign.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/market_service/controllers/OrdersController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/market_service/domain/DTOs/UserDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/compose.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/market_service/MarketServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/market_service/MarketServiceApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/market_service/repositories/OrdersRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/market_service/repositories/OrdersRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/market_service/services/OrdersService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/market_service/services/OrdersService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/market_service/services/OrdersServiceIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/market_service/services/OrdersServiceIntegrationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/market_service/utils/TestUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/market_service/utils/TestUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+    <list default="true" id="162c327e-40a8-45ef-94f7-97ffc5738198" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/market_service/MarketServiceApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/market_service/MarketServiceApplication.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/market_service/config/MapperConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/market_service/config/MapperConfig.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/market_service/domain/DTOs/EventTypeDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/market_service/domain/DTOs/EventTypeDTO.class" afterDir="false" />
@@ -29,16 +13,9 @@
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/market_service/domain/entities/OrdersEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/market_service/domain/entities/OrdersEntity.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/market_service/repositories/OrdersRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/market_service/repositories/OrdersRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/market_service/services/OrdersService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/market_service/services/OrdersService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.example.market_service.MarketServiceApplicationTests.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.example.market_service.MarketServiceApplicationTests.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/com/example/market_service/MarketServiceApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/example/market_service/MarketServiceApplicationTests.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/com/example/market_service/services/OrdersServiceIntegrationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/example/market_service/services/OrdersServiceIntegrationTests.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/com/example/market_service/utils/TestUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/example/market_service/utils/TestUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,8 +50,7 @@
     "JUnit.OrdersServiceIntegrationTests.testThatOrderIsAdded.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "service/market",
-    "kotlin-language-version-configured": "true"
+
   }
 }]]></component>
   <component name="RunManager" selected="JUnit.OrdersServiceIntegrationTests.testProcess">
