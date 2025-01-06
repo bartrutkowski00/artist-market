@@ -1,2 +1,11 @@
 /home/brutkowski/ArtistMarketRepo/artist-market/MarketService/src/main/java/com/example/market_service/MarketServiceApplication.java
-/home/brutkowski/ArtistMarketRepo/artist-market/MarketService/src/main/java/com/example/market_service/config/Mapper.java
+/home/brutkowski/ArtistMarketRepo/artist-market/MarketService/src/main/java/com/example/market_service/communication/UserServiceFeign.java
+/home/brutkowski/ArtistMarketRepo/artist-market/MarketService/src/main/java/com/example/market_service/config/MapperConfig.java
+/home/brutkowski/ArtistMarketRepo/artist-market/MarketService/src/main/java/com/example/market_service/controllers/OrdersController.java
+/home/brutkowski/ArtistMarketRepo/artist-market/MarketService/src/main/java/com/example/market_service/domain/DTOs/EventTypeDTO.java
+/home/brutkowski/ArtistMarketRepo/artist-market/MarketService/src/main/java/com/example/market_service/domain/DTOs/OrdersDTO.java
+/home/brutkowski/ArtistMarketRepo/artist-market/MarketService/src/main/java/com/example/market_service/domain/DTOs/UserDTO.java
+/home/brutkowski/ArtistMarketRepo/artist-market/MarketService/src/main/java/com/example/market_service/domain/entities/EventTypeEntity.java
+/home/brutkowski/ArtistMarketRepo/artist-market/MarketService/src/main/java/com/example/market_service/domain/entities/OrdersEntity.java
+/home/brutkowski/ArtistMarketRepo/artist-market/MarketService/src/main/java/com/example/market_service/repositories/OrdersRepository.java
+/home/brutkowski/ArtistMarketRepo/artist-market/MarketService/src/main/java/com/example/market_service/services/OrdersService.java

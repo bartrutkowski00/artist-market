@@ -1,1 +1,3 @@
 /home/brutkowski/ArtistMarketRepo/artist-market/MarketService/src/test/java/com/example/market_service/MarketServiceApplicationTests.java
+/home/brutkowski/ArtistMarketRepo/artist-market/MarketService/src/test/java/com/example/market_service/services/OrdersServiceIntegrationTests.java
+/home/brutkowski/ArtistMarketRepo/artist-market/MarketService/src/test/java/com/example/market_service/utils/TestUtils.java

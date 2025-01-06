@@ -1,1 +1,3 @@
+com/example/market_service/services/OrdersServiceIntegrationTests.class
 com/example/market_service/MarketServiceApplicationTests.class
+com/example/market_service/utils/TestUtils.class

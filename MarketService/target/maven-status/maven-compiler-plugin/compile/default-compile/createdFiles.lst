@@ -1,2 +1,11 @@
+com/example/market_service/communication/UserServiceFeign.class
+com/example/market_service/repositories/OrdersRepository.class
+com/example/market_service/controllers/OrdersController.class
+com/example/market_service/domain/entities/EventTypeEntity.class
+com/example/market_service/domain/DTOs/OrdersDTO.class
+com/example/market_service/domain/entities/OrdersEntity.class
 com/example/market_service/MarketServiceApplication.class
-com/example/market_service/config/Mapper.class
+com/example/market_service/services/OrdersService.class
+com/example/market_service/domain/DTOs/UserDTO.class
+com/example/market_service/domain/DTOs/EventTypeDTO.class
+com/example/market_service/config/MapperConfig.class

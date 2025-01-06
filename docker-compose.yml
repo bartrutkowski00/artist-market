@@ -1,6 +1,6 @@
 services:
   app1:
-    image: 'docker-spring-boot-postgres:latest'
+    image: 'user-service:latest'
     build:
       context: ./UserService
     container_name: app1
@@ -28,6 +28,9 @@ services:
     build:
       context: ./service-registry
     container_name: service-registry
+    depends_on:
+      - db2
+      - db1
     ports:
       - "8761:8761"
     environment:
@@ -35,3 +38,28 @@ services:
       - EUREKA_CLIENT_REGISTER_WITH_EUREKA=false
       - EUREKA_CLIENT_FETCH_REGISTRY=false
     restart: always
+  db2:
+    image: 'postgres:latest'
+    restart: always
+    environment:
+      - POSTGRES_DB=marketdb
+      - POSTGRES_PASSWORD=u78s78er10
+      - POSTGRES_USER=user
+    ports:
+      - "2531:2531"
+    command: postgres -p 2531
+  app2:
+    image: 'market-service:latest'
+    build:
+      context: ./MarketService
+    container_name: app2
+    depends_on:
+      - db2
+      - eureka-server
+    ports:
+      - "2532:2532"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db2:2531/marketdb
+      - SPRING_DATASOURCE_USERNAME=user
+      - SPRING_DATASOURCE_PASSWORD=u78s78er10
+      - SERVER_PORT=2532
