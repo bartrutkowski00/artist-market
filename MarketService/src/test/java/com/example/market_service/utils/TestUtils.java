@@ -15,7 +15,7 @@ public class TestUtils {
                 "TestOrder",
                 1L,
                 1L,
-                1L,
+                10000L,
                 LocalDate.now(),
                 new EventTypeDTO(1L, null),
                 null
