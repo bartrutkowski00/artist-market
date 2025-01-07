@@ -1,7 +1,9 @@
 com/example/market_service/communication/UserServiceFeign.class
 com/example/market_service/repositories/OrdersRepository.class
 com/example/market_service/controllers/OrdersController.class
+com/example/market_service/config/GlobalExceptionHandler.class
 com/example/market_service/domain/entities/EventTypeEntity.class
+com/example/market_service/config/WebConfig.class
 com/example/market_service/domain/DTOs/OrdersDTO.class
 com/example/market_service/domain/entities/OrdersEntity.class
 com/example/market_service/MarketServiceApplication.class

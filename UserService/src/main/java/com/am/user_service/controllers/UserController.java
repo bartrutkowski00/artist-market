@@ -32,6 +32,15 @@ public class UserController {
         return userService.getAllUsers();
     }
 
+    @PatchMapping(path = "/users/activate/{username}/{password}")
+    public ResponseEntity<UserDTO> activateUser(@PathVariable("username") String username, @PathVariable("password") String password){
+       return new ResponseEntity<UserDTO>(userService.activateUser(username, password), HttpStatus.ACCEPTED);
+    }
+
+    @PatchMapping(path = "/users/login/{username}/{password}")
+    public ResponseEntity<Boolean> logIn(@PathVariable("username") String username, @PathVariable("password") String password){
+        return new ResponseEntity<Boolean>(userService.logIn(username,password) , HttpStatus.ACCEPTED);
+    }
 
     @GetMapping(path = "/users/{userid}")
     public UserDTO getUser (@PathVariable("userid") Long userid){

@@ -3,6 +3,7 @@ package com.payment.payment_service.domain;
 public class PaymentDTO {
     private Long paymentid;
     private Long orderid;
+    private Long clientid;
     private Boolean paid;
 
     public Long getPaymentid() {
@@ -29,10 +30,19 @@ public class PaymentDTO {
         this.paid = paid;
     }
 
-    public PaymentDTO(Long paymentid, Long orderid, Boolean paid) {
+    public Long getClientid() {
+        return clientid;
+    }
+
+    public void setClientid(Long clientid) {
+        this.clientid = clientid;
+    }
+
+    public PaymentDTO(Long paymentid, Long orderid, Long clientid, Boolean paid) {
         this.paymentid = paymentid;
         this.orderid = orderid;
         this.paid = paid;
+        this.clientid = clientid;
     }
 
     public PaymentDTO() {

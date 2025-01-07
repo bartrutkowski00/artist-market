@@ -14,12 +14,14 @@ public class PaymentEntity {
     @Column(name = "paymentid")
     private Long paymentid;
     private Long orderid;
+    private Long clientid;
     private Boolean paid;
 
-    public PaymentEntity(Long paymentid, Long orderid, Boolean paid) {
+    public PaymentEntity(Long paymentid, Long orderid, Long clientid, Boolean paid) {
         this.paymentid = paymentid;
         this.orderid = orderid;
         this.paid = paid;
+        this.clientid = clientid;
     }
 
     public PaymentEntity() {
@@ -27,6 +29,14 @@ public class PaymentEntity {
 
     public Long getPaymentid() {
         return paymentid;
+    }
+
+    public Long getClientid() {
+        return clientid;
+    }
+
+    public void setClientid(Long clientid) {
+        this.clientid = clientid;
     }
 
     public void setPaymentid(Long paymentid) {

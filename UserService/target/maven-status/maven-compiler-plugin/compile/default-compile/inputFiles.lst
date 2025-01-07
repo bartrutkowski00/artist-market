@@ -1,5 +1,7 @@
 /home/brutkowski/ArtistMarketRepo/artist-market/UserService/src/main/java/com/am/user_service/UserServiceApplication.java
+/home/brutkowski/ArtistMarketRepo/artist-market/UserService/src/main/java/com/am/user_service/config/GlobalExceptionHandler.java
 /home/brutkowski/ArtistMarketRepo/artist-market/UserService/src/main/java/com/am/user_service/controllers/UserController.java
+/home/brutkowski/ArtistMarketRepo/artist-market/UserService/src/main/java/com/am/user_service/controllers/WebConfig.java
 /home/brutkowski/ArtistMarketRepo/artist-market/UserService/src/main/java/com/am/user_service/domain/dto/CityDTO.java
 /home/brutkowski/ArtistMarketRepo/artist-market/UserService/src/main/java/com/am/user_service/domain/dto/CountryDTO.java
 /home/brutkowski/ArtistMarketRepo/artist-market/UserService/src/main/java/com/am/user_service/domain/dto/FilterDTO.java

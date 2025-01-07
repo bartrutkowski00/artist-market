@@ -9,4 +9,6 @@ import java.util.List;
 public interface OrdersRepository extends JpaRepository<OrdersEntity, Long> {
     List<OrdersEntity> findByArtistid(Long artistId);
     List<OrdersEntity> findByClientid(Long clientID);
+    void deleteByArtistid(Long artistId);
+    void deleteByClientid(Long clientID);
 }

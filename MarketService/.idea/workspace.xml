@@ -5,17 +5,77 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="162c327e-40a8-45ef-94f7-97ffc5738198" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/market_service/config/GlobalExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/market_service/config/WebConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../UserService/src/main/java/com/am/user_service/config/GlobalExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../UserService/src/main/java/com/am/user_service/controllers/WebConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../payment-service/src/main/java/com/payment/payment_service/config/GlobalExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../payment-service/src/main/java/com/payment/payment_service/config/WebConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../payment-service/src/main/java/com/payment/payment_service/controllers/PaymentController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../payment-service/src/main/java/com/payment/payment_service/services/PaymentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/market_service/repositories/OrdersRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/market_service/repositories/OrdersRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/market_service/services/OrdersService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/market_service/services/OrdersService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/market_service/MarketServiceApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/market_service/MarketServiceApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/market_service/communication/UserServiceFeign.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/market_service/communication/UserServiceFeign.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/market_service/config/MapperConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/market_service/config/MapperConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/market_service/controllers/OrdersController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/market_service/controllers/OrdersController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/market_service/domain/DTOs/EventTypeDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/market_service/domain/DTOs/EventTypeDTO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/market_service/domain/DTOs/OrdersDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/market_service/domain/DTOs/OrdersDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/market_service/domain/DTOs/UserDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/market_service/domain/DTOs/UserDTO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/market_service/domain/entities/EventTypeEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/market_service/domain/entities/EventTypeEntity.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/market_service/domain/entities/OrdersEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/market_service/domain/entities/OrdersEntity.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/market_service/repositories/OrdersRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/market_service/repositories/OrdersRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/market_service/services/OrdersService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/market_service/services/OrdersService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/market-service-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/market-service-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/market-service-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/market-service-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/com/example/market_service/MarketServiceApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/example/market_service/MarketServiceApplicationTests.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/com/example/market_service/services/OrdersServiceIntegrationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/example/market_service/services/OrdersServiceIntegrationTests.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/com/example/market_service/utils/TestUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/example/market_service/utils/TestUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserService/src/main/java/com/am/user_service/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/src/main/java/com/am/user_service/controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserService/src/main/java/com/am/user_service/services/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/src/main/java/com/am/user_service/services/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserService/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserService/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserService/target/classes/com/am/user_service/UserServiceApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/target/classes/com/am/user_service/UserServiceApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserService/target/classes/com/am/user_service/controllers/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/target/classes/com/am/user_service/controllers/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserService/target/classes/com/am/user_service/domain/dto/CityDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/target/classes/com/am/user_service/domain/dto/CityDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserService/target/classes/com/am/user_service/domain/dto/CountryDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/target/classes/com/am/user_service/domain/dto/CountryDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserService/target/classes/com/am/user_service/domain/dto/FilterDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/target/classes/com/am/user_service/domain/dto/FilterDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserService/target/classes/com/am/user_service/domain/dto/UserDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/target/classes/com/am/user_service/domain/dto/UserDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserService/target/classes/com/am/user_service/domain/dto/UserroleDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/target/classes/com/am/user_service/domain/dto/UserroleDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserService/target/classes/com/am/user_service/domain/entities/CityEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/target/classes/com/am/user_service/domain/entities/CityEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserService/target/classes/com/am/user_service/domain/entities/CountryEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/target/classes/com/am/user_service/domain/entities/CountryEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserService/target/classes/com/am/user_service/domain/entities/UserroleEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/target/classes/com/am/user_service/domain/entities/UserroleEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserService/target/classes/com/am/user_service/domain/entities/UsrEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/target/classes/com/am/user_service/domain/entities/UsrEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserService/target/classes/com/am/user_service/repositories/CityRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/target/classes/com/am/user_service/repositories/CityRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserService/target/classes/com/am/user_service/repositories/CountryRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/target/classes/com/am/user_service/repositories/CountryRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserService/target/classes/com/am/user_service/repositories/UserroleRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/target/classes/com/am/user_service/repositories/UserroleRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserService/target/classes/com/am/user_service/repositories/UsrRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/target/classes/com/am/user_service/repositories/UsrRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserService/target/classes/com/am/user_service/repositories/cstm/UsrRepositoryCstm.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/target/classes/com/am/user_service/repositories/cstm/UsrRepositoryCstm.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserService/target/classes/com/am/user_service/repositories/cstm/UsrRepositoryCstmImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/target/classes/com/am/user_service/repositories/cstm/UsrRepositoryCstmImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserService/target/classes/com/am/user_service/security/Encryption.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/target/classes/com/am/user_service/security/Encryption.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserService/target/classes/com/am/user_service/services/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/target/classes/com/am/user_service/services/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserService/target/classes/com/am/user_service/services/impl/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/target/classes/com/am/user_service/services/impl/UserServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserService/target/classes/com/am/user_service/utils/Utils.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/target/classes/com/am/user_service/utils/Utils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserService/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserService/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserService/target/test-classes/com/am/user_service/UserServiceApplicationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/target/test-classes/com/am/user_service/UserServiceApplicationTests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserService/target/test-classes/com/am/user_service/repositories/UsrRepositoryIntegrationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/target/test-classes/com/am/user_service/repositories/UsrRepositoryIntegrationTests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserService/target/test-classes/com/am/user_service/services/UserServiceImplIntegrationTests.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/target/test-classes/com/am/user_service/services/UserServiceImplIntegrationTests.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserService/target/test-classes/com/am/user_service/testutil/TestUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/target/test-classes/com/am/user_service/testutil/TestUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserService/target/user-service-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/target/user-service-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../UserService/target/user-service-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/../UserService/target/user-service-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../payment-service/src/main/java/com/payment/payment_service/domain/PaymentDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../payment-service/src/main/java/com/payment/payment_service/domain/PaymentDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../payment-service/src/main/java/com/payment/payment_service/domain/PaymentEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../payment-service/src/main/java/com/payment/payment_service/domain/PaymentEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../payment-service/src/main/java/com/payment/payment_service/repositories/PaymentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../payment-service/src/main/java/com/payment/payment_service/repositories/PaymentRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../payment-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../payment-service/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../payment-service/src/main/resources/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../payment-service/src/main/resources/data.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../payment-service/src/main/resources/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../payment-service/src/main/resources/schema.sql" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,18 +102,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.MarketServiceApplication.executor": "Run",
-    "JUnit.MarketServiceApplicationTests.contextLoads.executor": "Run",
-    "JUnit.OrdersServiceIntegrationTests.testProcess.executor": "Run",
-    "JUnit.OrdersServiceIntegrationTests.testThatOrderIsAdded.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.MarketServiceApplication.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MarketServiceApplicationTests.contextLoads.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.OrdersServiceIntegrationTests.testProcess.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.OrdersServiceIntegrationTests.testThatOrderIsAdded.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
 
   }
-}]]></component>
-  <component name="RunManager" selected="JUnit.OrdersServiceIntegrationTests.testProcess">
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example.market_service.config" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.MarketServiceApplicationTests.contextLoads">
     <configuration name="MarketServiceApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.market_service.MarketServiceApplication" />
       <module name="market-service" />
@@ -101,8 +166,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.OrdersServiceIntegrationTests.testProcess" />
         <item itemvalue="JUnit.MarketServiceApplicationTests.contextLoads" />
+        <item itemvalue="JUnit.OrdersServiceIntegrationTests.testProcess" />
         <item itemvalue="Application.MarketServiceApplication" />
       </list>
     </recent_temporary>
@@ -110,7 +175,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="cd18a0d0-249c-490a-8245-5e74784a15e0" name="Changes" comment="" />
+      <changelist id="162c327e-40a8-45ef-94f7-97ffc5738198" name="Changes" comment="" />
       <created>1735999255528</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />

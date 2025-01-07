@@ -11,6 +11,7 @@ import com.am.user_service.repositories.UsrRepository;
 import com.am.user_service.security.Encryption;
 import com.am.user_service.services.UserService;
 import com.am.user_service.utils.Utils;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 
@@ -28,15 +29,19 @@ public class UserServiceImpl implements UserService {
     private UsrRepository usrRepository;
     private UserroleRepository userroleRepository;
     private CityRepository cityRepository;
+    private KafkaTemplate<String, String> kafkaTemplate;
 
-    UserServiceImpl(UsrRepository usrRepository, UserroleRepository userroleRepository, CityRepository cityRepository){
+    UserServiceImpl(UsrRepository usrRepository, UserroleRepository userroleRepository, CityRepository cityRepository, KafkaTemplate<String, String> kafkaTemplate){
         this.usrRepository = usrRepository;
         this.userroleRepository = userroleRepository;
         this.cityRepository = cityRepository;
+        this.kafkaTemplate = kafkaTemplate;
     }
 
     @Override
     public UserDTO addUser(UserDTO userDTO) {
+        validateAddingSchema(userDTO);
+        userDTO.setActivatedind(false);
         var userVerification =  usrRepository.findByUsername(userDTO.getUsername());
         if(!userVerification.isEmpty() || userDTO.getUserid() != null){
             throw new RuntimeException("User with that username already exists.");
@@ -85,6 +90,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDTO updateUser(UserDTO userDTO) {
+        validateUpdatingSchema(userDTO);
         UsrEntity updatedValues = new UsrEntity(userDTO);
        UsrEntity currentUser = usrRepository.findById(userDTO.getUserid()).orElseThrow(()->new RuntimeException("User not found"));
        UsrEntity updatedUser = new UsrEntity(
@@ -144,6 +150,8 @@ public class UserServiceImpl implements UserService {
     public void deleteUser(Long usrid) {
         UsrEntity toBeDeleted = usrRepository.findById(usrid).orElseThrow(()->new RuntimeException("User not found"));
         usrRepository.delete(toBeDeleted);
+        kafkaTemplate.send("delete.user.orders", String.valueOf(usrid));
+
     }
 
     @Override
@@ -154,5 +162,17 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<UserroleDTO> getUserRoles() {
         return userroleRepository.findAll().stream().map(UserroleDTO::new).collect(Collectors.toList());
+    }
+
+    private void validateAddingSchema(UserDTO userDTO){
+        if (userDTO.getUserid() != null || userDTO.getActivatedind() != null){
+            throw new RuntimeException("UserId and ActivatedInd has to be null");
+        }
+    }
+
+    private void validateUpdatingSchema(UserDTO userDTO){
+        if (userDTO.getUserid() != null || userDTO.getActivatedind() != null || userDTO.getCreateddate() != null){
+            throw new RuntimeException("UserId, ActivatedInd and CreatedDate has to be null");
+        }
     }
 }
