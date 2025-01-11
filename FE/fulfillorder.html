@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fulfill Order</title>
+    <style>
+        /* Global styles */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #0d0d0d;
+            color: #dcdcdc;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1a1a1a, #0f0f0f);
+            background-blend-mode: multiply;
+            z-index: -2;
+        }
+
+        body::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1604697968605-75963be7fa6f?fit=crop&w=3000&q=80') center/cover no-repeat;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .container {
+            width: 400px;
+            padding: 20px;
+            background: rgba(20, 20, 20, 0.9);
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+            padding-right: 40px;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            text-align: center;
+            color: #b084d9;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: 600;
+            color: #cb91da;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 8px;
+            background: #1a1a1a;
+            color: #dcdcdc;
+            font-size: 1rem;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            box-shadow: 0 0 8px rgba(179, 132, 217, 0.7);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #fff;
+            background: #864cbc;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(108, 76, 188, 0.5);
+        }
+
+        button:hover {
+            background: #7637a0;
+        }
+
+        .error {
+            color: #e74c3c;
+            font-size: 0.9rem;
+        }
+
+        .success {
+            color: #27ae60;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Fulfill Order</h1>
+        <form id="fulfillOrderForm">
+            <label for="clientId">Client ID:</label>
+            <input type="text" id="clientId" name="clientId" placeholder="Enter client ID" required>
+
+            <button type="button" id="fetchPaymentsButton">Fetch Unpaid Payments</button>
+
+            <label for="paymentDropdown">Unpaid Payments:</label>
+            <select id="paymentDropdown" name="paymentDropdown" disabled>
+                <option value="">Select payment</option>
+            </select>
+
+            <button type="submit">Fulfill Order</button>
+        </form>
+
+        <div id="statusMessage"></div>
+    </div>
+
+    <script>
+        document.getElementById("fetchPaymentsButton").addEventListener("click", fetchUnpaidPayments);
+        document.getElementById("fulfillOrderForm").addEventListener("submit", fulfillOrder);
+    
+        async function fetchUnpaidPayments() {
+            const clientId = document.getElementById("clientId").value.trim();
+            const dropdown = document.getElementById("paymentDropdown");
+            const statusMessage = document.getElementById("statusMessage");
+    
+            dropdown.innerHTML = '<option value="">Select payment</option>';
+            dropdown.disabled = true;
+            statusMessage.textContent = "";
+    
+            if (!clientId) {
+                statusMessage.textContent = "Please enter a valid Client ID.";
+                statusMessage.className = "error";
+                return;
+            }
+    
+            try {
+                const response = await fetch(`http://localhost:2632/payment/client/${clientId}`, {
+                    method: "GET"
+                });
+    
+                // Obsłuż przekierowanie lub odpowiedzi z kodem 200
+                if (response.status === 302) {
+                    statusMessage.textContent = "Request redirected (302). Attempting to fetch data.";
+                    statusMessage.className = "info";
+                } else if (!response.ok && response.status !== 200) {
+                    throw new Error(`Error: ${response.status} - ${response.statusText}`);
+                }
+    
+                const payments = await response.json();
+    
+                if (payments.length === 0) {
+                    statusMessage.textContent = "No unpaid payments found for this client.";
+                    statusMessage.className = "error";
+                } else {
+                    payments.forEach(payment => {
+                        const option = document.createElement("option");
+                        option.value = payment.paymentid;
+                        option.textContent = `Payment ID: ${payment.paymentid}, Order ID: ${payment.orderid}`;
+                        dropdown.appendChild(option);
+                    });
+    
+                    dropdown.disabled = false;
+                    statusMessage.textContent = `Found ${payments.length} unpaid payment(s).`;
+                    statusMessage.className = "success";
+                }
+            } catch (error) {
+                console.error("Error fetching unpaid payments:", error);
+                statusMessage.textContent = "Unable to fetch unpaid payments. Please try again.";
+                statusMessage.className = "error";
+            }
+        }
+    
+        async function fulfillOrder(event) {
+            event.preventDefault();
+            const paymentId = document.getElementById("paymentDropdown").value;
+            const statusMessage = document.getElementById("statusMessage");
+    
+            statusMessage.textContent = "";
+    
+            if (!paymentId) {
+                statusMessage.textContent = "Please select a payment to fulfill.";
+                statusMessage.className = "error";
+                return;
+            }
+    
+            try {
+                const response = await fetch(`http://localhost:2632/payment/${paymentId}`, {
+                    method: "PATCH", // Zgodnie z dokumentacją
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Error: ${response.status} - ${response.statusText}`);
+                }
+    
+                // Obsłuż przekierowanie lub odpowiedzi z kodem 200
+                if (response.status === 302) {
+                    statusMessage.textContent = "Request redirected (302). Attempting to fulfill payment.";
+                    statusMessage.className = "info";
+                } else if (!response.ok && response.status !== 200) {
+                    throw new Error(`Error: ${response.status} - ${response.statusText}`);
+                }
+    
+                const result = await response.json();
+                statusMessage.textContent = `Payment fulfilled successfully! Payment ID: ${result.paymentid}, Order ID: ${result.orderid}`;
+                statusMessage.className = "success";
+            } catch (error) {
+                console.error("Error fulfilling payment:", error);
+                statusMessage.textContent = "Unable to fulfill the payment. Please try again.";
+                statusMessage.className = "error";
+            }
+        }
+    </script>
+</body>
+</html>
