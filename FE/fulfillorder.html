@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fulfill Order</title>
     <style>
-        /* Global styles */
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
         body {
@@ -158,7 +157,6 @@
                     method: "GET"
                 });
     
-                // Obsłuż przekierowanie lub odpowiedzi z kodem 200
                 if (response.status === 302) {
                     statusMessage.textContent = "Request redirected (302). Attempting to fetch data.";
                     statusMessage.className = "info";
@@ -212,7 +210,7 @@
                     throw new Error(`Error: ${response.status} - ${response.statusText}`);
                 }
     
-                // Obsłuż przekierowanie lub odpowiedzi z kodem 200
+                // Obsługa przekierowania\odpowiedzi z kodem 200
                 if (response.status === 302) {
                     statusMessage.textContent = "Request redirected (302). Attempting to fulfill payment.";
                     statusMessage.className = "info";

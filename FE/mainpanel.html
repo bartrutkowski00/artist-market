@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ClubConnect</title>
     <style>
-        /* Global styles */
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
         
 
@@ -24,7 +22,6 @@
             overflow: hidden;
         }
 
-        /* Background gradient with texture overlay */
         body::before {
             content: '';
             position: absolute;
@@ -49,7 +46,6 @@
             z-index: -1;
         }
 
-        /* Header */
         header {
             width: 100%;
             padding: 20px 40px;
@@ -91,7 +87,6 @@
             background: #7637a0;
         }
 
-        /* Main container for tiles */
         .main-container {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -102,7 +97,6 @@
             margin: 20px 0;
         }
 
-        /* Individual tiles */
         .tile {
             position: relative;
             display: flex;
@@ -146,7 +140,6 @@
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
         }
 
-        /* Footer */
         footer {
             width: 100%;
             padding: 15px;
@@ -171,8 +164,8 @@
 <body>
 
     <header>
-        <h1>Club</h1>
-        <h2>Connect</h2>
+        
+        <h2>Main Panel</h2>
         <button onclick="goToActivationPanel()">Activate User</button>
     </header>
 

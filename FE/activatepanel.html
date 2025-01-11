@@ -63,13 +63,13 @@
 
         label {
             display: block;
-            margin: 10px 0 5px;
+            margin: 20px 0 5px;
             font-weight: 600;
             color: #cb91da;
         }
 
         input {
-            width: 100%;
+            width: 95%;
             padding: 10px;
             margin-bottom: 15px;
             border: none;
@@ -77,7 +77,7 @@
             background: #1a1a1a;
             color: #dcdcdc;
             font-size: 1rem;
-            margin-right: 30px;
+            
         }
 
         input:focus {
@@ -132,16 +132,16 @@
 
     <script>
         document.getElementById('activateUserForm').addEventListener('submit', async (event) => {
-            event.preventDefault(); // Prevent default form submission
+            event.preventDefault(); 
 
             const username = document.getElementById('username').value.trim();
             const password = document.getElementById('password').value.trim();
             const statusMessage = document.getElementById('statusMessage');
 
-            statusMessage.textContent = ''; // Clear previous messages
+            statusMessage.textContent = ''; 
 
             try {
-                // Make API request to ActivateUser endpoint
+                
                 const response = await fetch(`http://localhost:2432/users/activate/${username}/${password}`, {
                     method: 'PATCH',
                 });
@@ -153,12 +153,12 @@
                 const data = await response.json();
                 console.log('Response from ActivateUser:', data);
 
-                // Display success message
+                
                 statusMessage.textContent = 'Account activated successfully!';
                 statusMessage.className = 'success';
             } catch (error) {
                 console.error('Error activating user:', error);
-                // Display error message
+                
                 statusMessage.textContent = 'Failed to activate account. Please try again.';
                 statusMessage.className = 'error';
             }
