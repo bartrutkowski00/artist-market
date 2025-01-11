@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClubConnect</title>
+    <style>
+        /* Global styles */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+        
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+            background-color: #0d0d0d;
+            color: #dcdcdc;
+            overflow: hidden;
+        }
+
+        /* Background gradient with texture overlay */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1a1a1a, #0f0f0f);
+            background-blend-mode: multiply;
+            z-index: -2;
+        }
+
+        body::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1604697968605-75963be7fa6f?fit=crop&w=3000&q=80') center/cover no-repeat;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        /* Header */
+        header {
+            width: 100%;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(20, 20, 20, 0.9);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #b084d9;
+            margin: 0;
+        }
+
+        header h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin: 0;
+        }
+
+        header button {
+            padding: 10px 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #fff;
+            background: #864cbc;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(108, 76, 188, 0.5);
+        }
+
+        header button:hover {
+            background: #7637a0;
+        }
+
+        /* Main container for tiles */
+        .main-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 20px;
+            width: 70%;
+            height: calc(100% - 120px);
+            margin: 20px 0;
+        }
+
+        /* Individual tiles */
+        .tile {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            color: #b121a5;
+            background: #1a1a1a;
+            border-radius: 16px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .tile img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.2;
+            transition: opacity 0.3s ease;
+        }
+
+        .tile:hover img {
+            opacity: 0.4;
+        }
+
+        .tile span {
+            position: relative;
+            z-index: 1;
+            color: #cb91da;
+        }
+
+        .tile:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Footer */
+        footer {
+            width: 100%;
+            padding: 15px;
+            text-align: center;
+            background: rgba(20, 20, 20, 0.9);
+            font-size: 0.8rem;
+            color: #9c9c9c;
+            box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.8);
+        }
+
+        footer a {
+            color: #b084d9;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Club</h1>
+        <h2>Connect</h2>
+        <button onclick="goToActivationPanel()">Activate User</button>
+    </header>
+
+    <div class="main-container">
+        <div class="tile" onclick="goToUserList()">
+            <img src="https://images.unsplash.com/photo-1429514513361-8fa32282fd5f?fm=jpg&q=60&w=3000" alt="Users">
+            <span>Users List</span>
+        </div>
+        <div class="tile" onclick="goToOrderList()">
+            <img src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?fm=jpg&q=60&w=3000" alt="Orders">
+            <span>Order List</span>
+        </div>
+        <div class="tile" onclick="goToAddOrderPanel()">
+            <img src="https://media.istockphoto.com/id/1305092239/photo/silhouette-of-girl-with-raised-hands-on-music-concert.jpg?s=612x612&w=0&k=20&c=8hDVR655_XTo-KWlcFkscaHXSk7eCoCDJoTartgQzN0=" alt="Add Order">
+            <span>Add Order</span>
+        </div>
+        <div class="tile" onclick="goToPaymentPanel()">
+            <img src="https://c1.wallpaperflare.com/preview/448/284/997/dark-night-party-concert.jpg" alt="Payment">
+            <span>Payment</span>
+        </div>
+    </div>
+
+    <footer>
+        <h3>Bartłomiej Rutkowski & Karol Kubisz</h3>
+    </footer>
+
+    <script>
+        function goToActivationPanel() {
+            alert('Navigating to Activation Panel');
+            console.log('Navigating to Activation Panel');
+        }
+
+        function goToUserList() {
+            alert('Navigating to User List');
+            console.log('Navigating to User List');
+        }
+
+        function goToOrderList() {
+            alert('Navigating to Order List');
+            console.log('Navigating to Order List');
+        }
+
+        function goToAddOrderPanel() {
+            alert('Navigating to Add Order Panel');
+            console.log('Navigating to Add Order Panel');
+        }
+
+        function goToPaymentPanel() {
+            alert('Navigating to Payment Panel');
+            console.log('Navigating to Payment Panel');
+        }
+    </script>
+</body>
+</html>
+
+
