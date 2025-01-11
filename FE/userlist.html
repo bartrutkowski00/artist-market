@@ -146,6 +146,7 @@
         const userTableBody = document.querySelector('#userTable tbody');
         const messageDiv = document.getElementById('message');
 
+        // Pobieranie wszystkich użytkowników
         fetchUsersButton.addEventListener('click', async () => {
             try {
                 const response = await fetch('http://localhost:2432/users');
@@ -160,20 +161,26 @@
             }
         });
 
+        // Wyszukiwanie użytkowników na podstawie filtrów
         findUsersButton.addEventListener('click', async () => {
             const filters = {
-                username: document.getElementById('username').value,
-                email: document.getElementById('email').value,
-                city: document.getElementById('city').value,
+                username: document.getElementById('username').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                city: document.getElementById('city').value.trim(),
                 createdDateFrom: document.getElementById('createdDateFrom').value,
                 createdDateTo: document.getElementById('createdDateTo').value,
             };
+
+            // Usunięcie pustych pól z filtrów
+            const activeFilters = Object.fromEntries(
+                Object.entries(filters).filter(([_, value]) => value)
+            );
 
             try {
                 const response = await fetch('http://localhost:2432/users/find', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(filters),
+                    body: JSON.stringify(activeFilters),
                 });
 
                 if (!response.ok) throw new Error('Failed to search users.');
@@ -187,8 +194,9 @@
             }
         });
 
+        // Funkcja do wypełniania tabeli użytkownikami
         function populateUsers(users) {
-            userTableBody.innerHTML = ''; // Clear the table
+            userTableBody.innerHTML = ''; // Wyczyszczenie tabeli
 
             if (users.length === 0) {
                 userTableBody.innerHTML = `<tr><td colspan="10" style="text-align: center;">No users found</td></tr>`;
@@ -217,6 +225,7 @@
             });
         }
 
+        // Funkcja do usuwania użytkownika
         async function deleteUser(userId) {
             try {
                 const response = await fetch(`http://localhost:2432/users/${userId}`, { method: 'DELETE' });
@@ -231,6 +240,7 @@
             }
         }
 
+        // Funkcja do wyświetlania wiadomości
         function displayMessage(message, type) {
             messageDiv.textContent = message;
             messageDiv.className = type;

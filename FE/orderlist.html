@@ -104,7 +104,7 @@
                 <option value="client">Client</option>
                 <option value="artist">Artist</option>
             </select>
-            <input type="number" id="userId" placeholder="Enter User ID (optional)" disabled>
+            <input type="number" id="userId" placeholder="Enter User ID (optional)">
             <button id="fetchOrders">Fetch Orders</button>
         </div>
         <table id="orderTable">
@@ -131,13 +131,12 @@
     </div>
 
     <script>
-        
         const fetchOrdersButton = document.getElementById('fetchOrders');
         const userTypeSelect = document.getElementById('userType');
         const userIdInput = document.getElementById('userId');
         const orderTableBody = document.querySelector('#orderTable tbody');
         const messageDiv = document.getElementById('message');
-
+    
         // Enable or disable User ID input based on user type selection
         userTypeSelect.addEventListener('change', () => {
             const userType = userTypeSelect.value;
@@ -148,13 +147,13 @@
                 userIdInput.disabled = false;
             }
         });
-
+    
         fetchOrdersButton.addEventListener('click', async () => {
             const userType = userTypeSelect.value;
             const userId = userIdInput.value.trim();
-
+    
             let endpoint;
-
+    
             if (userType === 'all') {
                 endpoint = 'http://localhost:2532/orders';
             } else if (userId) {
@@ -163,31 +162,35 @@
                 displayMessage('Please provide a User ID for Client or Artist type.', 'error');
                 return;
             }
-
+    
             try {
                 const response = await fetch(endpoint);
-                if (!response.ok) throw new Error('Failed to fetch orders.');
-
                 const orders = await response.json();
-                populateOrders(orders);
-                displayMessage('Orders fetched successfully!', 'success');
+    
+                if (!response.ok) {
+                    displayMessage('Error fetching orders, but displaying retrieved data.', 'error');
+                } else {
+                    displayMessage('Orders fetched successfully!', 'success');
+                }
+    
+                populateOrders(orders); // Ensure the data is displayed regardless of response.ok
             } catch (error) {
                 console.error(error);
                 displayMessage('Error fetching orders: ' + error.message, 'error');
             }
         });
-
+    
         function populateOrders(orders) {
             orderTableBody.innerHTML = ''; // Clear the table
-
-            if (orders.length === 0) {
+    
+            if (!orders || orders.length === 0) {
                 orderTableBody.innerHTML = `<tr><td colspan="9" style="text-align: center;">No orders found</td></tr>`;
                 return;
             }
-
+    
             orders.forEach(order => {
                 const row = document.createElement('tr');
-
+    
                 row.innerHTML = `
                     <td>${order.ordersid}</td>
                     <td>${order.name}</td>
@@ -195,24 +198,24 @@
                     <td>${order.clientid}</td>
                     <td>${order.artistid}</td>
                     <td>${order.eventdate}</td>
-                    <td>${order.eventtype.name}</td>
+                    <td>${order.eventtype?.name || 'N/A'}</td>
                     <td>${order.createddate}</td>
                     <td>
                         <button class="cancel-btn" onclick="cancelOrder(${order.ordersid})">Cancel</button>
                     </td>
                 `;
-
+    
                 orderTableBody.appendChild(row);
             });
         }
-
+    
         async function cancelOrder(orderId) {
             try {
                 const endpoint = `http://localhost:2532/orders/${orderId}`;
                 const response = await fetch(endpoint, { method: 'DELETE' });
-
+    
                 if (!response.ok) throw new Error('Failed to cancel order.');
-
+    
                 displayMessage(`Order ID ${orderId} cancelled successfully!`, 'success');
                 document.querySelector(`button[onclick="cancelOrder(${orderId})"]`).parentElement.parentElement.remove();
             } catch (error) {
@@ -220,7 +223,7 @@
                 displayMessage('Error cancelling order: ' + error.message, 'error');
             }
         }
-
+    
         function displayMessage(message, type) {
             messageDiv.textContent = message;
             messageDiv.className = type;
