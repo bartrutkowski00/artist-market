@@ -147,7 +147,7 @@
 
                 data.forEach(item => {
                     const option = document.createElement('option');
-                    option.value = item.id; // Assuming `id` is the unique identifier for both clients and artists
+                    option.value = item.userid; // Assuming `id` is the unique identifier for both clients and artists
                     option.textContent = item.name || item.username; // Use `name` or `username` as the display value
                     dropdown.appendChild(option);
                 });
