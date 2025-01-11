@@ -158,8 +158,8 @@
         }
 
         async function loadData() {
-            await populateDropdown('http://localhost:2532/GetClientUsers', 'clientId', 'Select Client');
-            await populateDropdown('http://localhost:2532/GetArtistUsers', 'artistId', 'Select Artist');
+            await populateDropdown('http://localhost:2432/users/clients', 'clientId', 'Select Client');
+            await populateDropdown('http://localhost:2432/users/artists', 'artistId', 'Select Artist');
         }
 
         document.getElementById('orderForm').addEventListener('submit', async function(event) {
