@@ -27,6 +27,6 @@ public class PaymentController {
 
     @GetMapping("/payment/client/{id}")
     public ResponseEntity<List<PaymentDTO>> getClientUnpaidPayments(@PathVariable("id") Long clientid){
-        return new ResponseEntity<>(paymentService.getClientUnpaidPayments(clientid), HttpStatus.FOUND);
+        return new ResponseEntity<>(paymentService.getClientUnpaidPayments(clientid), HttpStatus.OK);
     }
 }
