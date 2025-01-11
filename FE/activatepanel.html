@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Activation</title>
+    <style>
+        /* Global styles from the main page */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #0d0d0d;
+            color: #dcdcdc;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1a1a1a, #0f0f0f);
+            background-blend-mode: multiply;
+            z-index: -2;
+        }
+
+        body::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1604697968605-75963be7fa6f?fit=crop&w=3000&q=80') center/cover no-repeat;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .container {
+            width: 400px;
+            padding: 20px;
+            background: rgba(20, 20, 20, 0.9);
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            text-align: center;
+            color: #b084d9;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin: 20px 0 5px;
+            font-weight: 600;
+            color: #cb91da;
+        }
+
+        input {
+            width: 95%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 8px;
+            background: #1a1a1a;
+            color: #dcdcdc;
+            font-size: 1rem;
+            
+        }
+
+        input:focus {
+            outline: none;
+            box-shadow: 0 0 8px rgba(179, 132, 217, 0.7);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #fff;
+            background: #864cbc;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(108, 76, 188, 0.5);
+        }
+
+        button:hover {
+            background: #7637a0;
+        }
+
+        .error {
+            color: #e74c3c;
+            font-size: 0.9rem;
+        }
+
+        .success {
+            color: #27ae60;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Activate User Account</h1>
+        <form id="activateUserForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required placeholder="Enter username">
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required placeholder="Enter password">
+
+            <button type="submit">Activate Account</button>
+        </form>
+
+        <div id="statusMessage"></div>
+    </div>
+
+    <script>
+        document.getElementById('activateUserForm').addEventListener('submit', async (event) => {
+            event.preventDefault(); 
+
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const statusMessage = document.getElementById('statusMessage');
+
+            statusMessage.textContent = ''; 
+
+            try {
+                
+                const response = await fetch(`http://localhost:2432/users/activate/${username}/${password}`, {
+                    method: 'PATCH',
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Error: ${response.statusText}`);
+                }
+
+                const data = await response.json();
+                console.log('Response from ActivateUser:', data);
+
+                
+                statusMessage.textContent = 'Account activated successfully!';
+                statusMessage.className = 'success';
+            } catch (error) {
+                console.error('Error activating user:', error);
+                
+                statusMessage.textContent = 'Failed to activate account. Please try again.';
+                statusMessage.className = 'error';
+            }
+        });
+    </script>
+</body>
+</html>

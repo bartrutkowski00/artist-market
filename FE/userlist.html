@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User List</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #0d0d0d;
+            color: #dcdcdc;
+        }
+    
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1a1a1a, #0f0f0f);
+            background-blend-mode: multiply;
+            z-index: -2;
+        }
+    
+        body::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1604697968605-75963be7fa6f?fit=crop&w=3000&q=80') center/cover no-repeat;
+            opacity: 0.1;
+            z-index: -1;
+        }
+    
+        h1 {
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #b084d9;
+            margin-bottom: 20px;
+        }
+    
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(20, 20, 20, 0.9);
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+        }
+    
+        .controls, .filter-form {
+            margin-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+    
+        .controls button, .filter-form input {
+            padding: 10px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 8px;
+            background: #1a1a1a;
+            color: #dcdcdc;
+            transition: all 0.3s ease;
+        }
+    
+        .controls button:hover, .filter-form button:hover {
+            background-color: #7637a0;
+            color: #fff;
+        }
+    
+        .filter-form input {
+            width: 200px;
+            box-shadow: 0 0 8px rgba(179, 132, 217, 0.7);
+        }
+    
+        .filter-form button {
+            background-color: #864cbc;
+            color: #fff;
+            padding: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(108, 76, 188, 0.5);
+        }
+    
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: rgba(20, 20, 20, 0.9);
+        }
+    
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #4b5563;
+            font-size: 1rem;
+        }
+    
+        th {
+            background-color: #2c2c2c;
+            color: #d4d4d8;
+        }
+    
+        td {
+            background-color: #3f3f46;
+            color: #dcdcdc;
+        }
+    
+        .delete-btn {
+            padding: 10px 14px;
+            color: #fff;
+            background-color: #e74c3c;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+    
+        .delete-btn:hover {
+            background-color: #c0392b;
+        }
+    
+        .error {
+            color: #e74c3c;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+    
+        .success {
+            color: #27ae60;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="container">
+        <h1>User List</h1>
+        <div class="controls">
+            <button id="fetchUsers">Show All Users</button>
+        </div>
+        <form class="filter-form" id="filterForm">
+            <input type="text" id="username" placeholder="Username">
+            <input type="email" id="email" placeholder="Email">
+            <input type="text" id="city" placeholder="City">
+            <input type="date" id="createdDateFrom" placeholder="Created Date From">
+            <input type="date" id="createdDateTo" placeholder="Created Date To">
+            <button type="button" id="findUsers">Filter Users</button>
+        </form>
+        <table id="userTable">
+            <thead>
+                <tr>
+                    <th>User ID</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>City</th>
+                    <th>Country</th>
+                    <th>User Role</th>
+                    <th>Activated</th>
+                    <th>Created Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="10" style="text-align: center;">No users to display</td>
+                </tr>
+            </tbody>
+        </table>
+        <div id="message"></div>
+    </div>
+
+    <script>
+        const fetchUsersButton = document.getElementById('fetchUsers');
+        const findUsersButton = document.getElementById('findUsers');
+        const filterForm = document.getElementById('filterForm');
+        const userTableBody = document.querySelector('#userTable tbody');
+        const messageDiv = document.getElementById('message');
+
+        fetchUsersButton.addEventListener('click', async () => {
+            try {
+                const response = await fetch('http://localhost:2432/users');
+                if (!response.ok) throw new Error('Failed to show users.');
+
+                const users = await response.json();
+                populateUsers(users);
+                displayMessage('Users showed successfully!', 'success');
+            } catch (error) {
+                console.error(error);
+
+            }
+        });
+
+        findUsersButton.addEventListener('click', async () => {
+            const filters = {
+                username: document.getElementById('username').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                city: document.getElementById('city').value.trim(),
+                createdDateFrom: document.getElementById('createdDateFrom').value,
+                createdDateTo: document.getElementById('createdDateTo').value,
+            };
+
+            const activeFilters = Object.fromEntries(
+                Object.entries(filters).filter(([_, value]) => value)
+            );
+
+            try {
+                const response = await fetch('http://localhost:2432/users/find', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(activeFilters),
+                });
+
+                if (!response.ok) throw new Error('Failed to search users.');
+
+                const users = await response.json();
+                populateUsers(users);
+                displayMessage('Users found successfully!', 'success');
+            } catch (error) {
+                console.error(error);
+                displayMessage('Complete the search filter', 'error');
+            }
+        });
+
+        function populateUsers(users) {
+            userTableBody.innerHTML = ''; 
+
+            if (users.length === 0) {
+                userTableBody.innerHTML = `<tr><td colspan="10" style="text-align: center;">No users found</td></tr>`;
+                return;
+            }
+
+            users.forEach(user => {
+                const row = document.createElement('tr');
+
+                row.innerHTML = `
+                    <td>${user.userid}</td>
+                    <td>${user.username}</td>
+                    <td>${user.email}</td>
+                    <td>${user.phone}</td>
+                    <td>${user.city.name}</td>
+                    <td>${user.city.country.name}</td>
+                    <td>${user.userrole.description}</td>
+                    <td>${user.activatedind ? 'Yes' : 'No'}</td>
+                    <td>${new Date(user.createddate).toLocaleDateString()}</td>
+                    <td>
+                        <button class="delete-btn" onclick="deleteUser(${user.userid})">Delete</button>
+                    </td>
+                `;
+
+                userTableBody.appendChild(row);
+            });
+        }
+
+        async function deleteUser(userId) {
+            try {
+                const response = await fetch(`http://localhost:2432/users/${userId}`, { method: 'DELETE' });
+
+                if (!response.ok) throw new Error('Failed to delete user.');
+
+                displayMessage(`User ID ${userId} deleted successfully!`, 'success');
+                document.querySelector(`button[onclick="deleteUser(${userId})"]`).parentElement.parentElement.remove();
+            } catch (error) {
+                console.error(error);
+                displayMessage('Error deleting user: ' + error.message, 'error');
+            }
+        }
+
+        function displayMessage(message, type) {
+            messageDiv.textContent = message;
+            messageDiv.className = type;
+            setTimeout(() => { messageDiv.textContent = ''; messageDiv.className = ''; }, 3000);
+        }
+    </script>
+</body>
+</html>

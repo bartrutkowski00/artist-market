@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Place Order</title>
+    <style>
+        /* Global styles */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #0d0d0d;
+            color: #dcdcdc;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1a1a1a, #0f0f0f);
+            background-blend-mode: multiply;
+            z-index: -2;
+        }
+
+        body::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1604697968605-75963be7fa6f?fit=crop&w=3000&q=80') center/cover no-repeat;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .container {
+            width: 400px;
+            padding: 20px;
+            background: rgba(20, 20, 20, 0.9);
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            text-align: center;
+            color: #b084d9;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: 600;
+            color: #cb91da;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 8px;
+            background: #1a1a1a;
+            color: #dcdcdc;
+            font-size: 1rem;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            box-shadow: 0 0 8px rgba(179, 132, 217, 0.7);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #fff;
+            background: #864cbc;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(108, 76, 188, 0.5);
+        }
+
+        button:hover {
+            background: #7637a0;
+        }
+
+        .error {
+            color: #e74c3c;
+            font-size: 0.9rem;
+        }
+
+        .success {
+            color: #27ae60;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <h1>Place Order</h1>
+        <form id="orderForm">
+            <label for="name">Order Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="clientId">Client ID:</label>
+            <select id="clientId" name="clientId" required>
+                <option value="">Loading clients...</option>
+            </select>
+
+            <label for="artistId">Artist ID:</label>
+            <select id="artistId" name="artistId" required>
+                <option value="">Loading artists...</option>
+            </select>
+
+            <label for="eventDate">Event Date:</label>
+            <input type="date" id="eventDate" name="eventDate" required>
+
+            <label for="eventType">Event Type:</label>
+            <select id="eventType" name="eventType" required>
+                <option value="1">Concert</option>
+            </select>
+
+            <button type="submit">Place Order</button>
+        </form>
+
+        <div id="message"></div>
+    </div>
+
+    <script>
+        async function populateDropdown(url, dropdownId, placeholder) {
+            const dropdown = document.getElementById(dropdownId);
+            dropdown.innerHTML = `<option value="">${placeholder}</option>`;
+
+            try {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error('Failed to load data');
+                const data = await response.json();
+
+                data.forEach(item => {
+                    const option = document.createElement('option');
+                    option.value = item.userid; 
+                    option.textContent = item.name || item.username; 
+                    dropdown.appendChild(option);
+                });
+            } catch (error) {
+                console.error(error);
+                dropdown.innerHTML = `<option value="">Error loading ${placeholder}</option>`;
+            }
+        }
+
+        async function loadData() {
+            await populateDropdown('http://localhost:2432/users/clients', 'clientId', 'Select Client');
+            await populateDropdown('http://localhost:2432/users/artists', 'artistId', 'Select Artist');
+        }
+
+        document.getElementById('orderForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value.trim();
+            const clientId = parseInt(document.getElementById('clientId').value);
+            const artistId = parseInt(document.getElementById('artistId').value);
+            const eventDate = document.getElementById('eventDate').value;
+            const eventType = parseInt(document.getElementById('eventType').value);
+
+            const messageDiv = document.getElementById('message');
+            messageDiv.textContent = '';
+
+            const orderData = {
+                name,
+                clientid: clientId,
+                artistid: artistId,
+                eventdate: eventDate,
+                eventtype: {
+                    eventtypeid: eventType
+                }
+            };
+
+            try {
+                const response = await fetch('http://localhost:2532/orders', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(orderData)
+                });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    messageDiv.textContent = `Order placed successfully! Order ID: ${result.ordersid}`;
+                    messageDiv.className = 'success';
+                } else {
+                    const error = await response.text();
+                    messageDiv.textContent = `${error}`;
+                    messageDiv.className = 'error';
+                }
+            } catch (error) {
+                messageDiv.textContent = `Error: ${error.message}`;
+                messageDiv.className = 'error';
+            }
+        });
+
+        loadData(); 
+    </script>
+</body>
+</html>
