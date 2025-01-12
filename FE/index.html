@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add User Form</title>
     <style>
-        /* Global styles */
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
         body {
@@ -140,7 +139,6 @@
     <h1>Welcome</h1>
     <h2><br>ADD USER ACCOUNT</h2>
     <div class="container">
-        <!-- Formularz AddUser -->
         <form id="addUserForm">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
@@ -180,8 +178,13 @@
 
     <script>
         function validatePhoneNumber(phone) {
-            const phonePattern = /^\d{9}$/; // Dokładnie 9 cyfr
+            const phonePattern = /^\d{9}$/; 
             return phonePattern.test(phone);
+        }
+
+        function validatePassword(password) {
+            const passwordPattern = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8,}$/;
+            return passwordPattern.test(password);
         }
 
         function togglePasswordVisibility() {
@@ -198,7 +201,7 @@
         }
 
         async function addUser(event) {
-            event.preventDefault(); // Zapobieganie sumbitowaniu defaultowych formów
+            event.preventDefault();
 
             const username = document.getElementById('username').value.trim();
             const password = document.getElementById('password').value.trim();
@@ -216,6 +219,7 @@
             if (!city) errorMessages.push("City is required.");
             if (isNaN(userroleid) || userroleid < 1) errorMessages.push("Please select a valid user role.");
             if (!validatePhoneNumber(phone)) errorMessages.push("Invalid phone number format. Enter 9 digits only.");
+            if (!validatePassword(password)) errorMessages.push("Password must be at least 8 characters long, include an uppercase letter, a number, and a special character.");
 
             if (errorMessages.length > 0) {
                 document.getElementById('errorMessages').innerHTML = errorMessages.map(msg => `<p class='error'>${msg}</p>`).join('');
@@ -232,7 +236,6 @@
             };
 
             try {
-                // Odwołanie do backendu
                 const response = await fetch('http://localhost:2432/users', {
                     method: 'POST',
                     headers: {
@@ -242,14 +245,13 @@
                 });
 
                 if (!response.ok) {
-                    throw new Error(`Failed to add user: ${response.statusText}`);
+                    throw new Error(`Failed to add user: ${response.statusText} User already exists`);
                 }
 
                 const data = await response.json();
                 console.log('Server Response:', data);
                 document.getElementById('statusMessage').innerHTML = '<span class="success">User added successfully!</span>';
 
-                // Przekierowanie po dodaniu użytkownika
                 window.location.href = "mainpanel.html";
             } catch (error) {
                 console.error(error);
@@ -260,4 +262,3 @@
         document.getElementById('addUserForm').addEventListener('submit', addUser);
     </script>
 </body>
-</html>
